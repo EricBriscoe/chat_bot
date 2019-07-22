@@ -1,0 +1,6 @@
+praw
+pandas
+chatterbot
+discord.py
+tqdm
+chatterbot-corpus
