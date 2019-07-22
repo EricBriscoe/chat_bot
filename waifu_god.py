@@ -1,5 +1,4 @@
 import os
-import time
 
 import discord
 from chatterbot import ChatBot
@@ -18,9 +17,6 @@ class Player(discord.Client):
 
         # don't respond to ourselves
         if message.author == self.user:
-            time.sleep(.5)
-            # await message.channel.send(chatbot.get_response(message.content))
-            chatbot.get_response(message.content)
             return
 
         if message.channel.id == 601256029501521930:
