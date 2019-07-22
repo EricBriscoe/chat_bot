@@ -49,7 +49,7 @@ class Player(discord.Client):
             else:
                 await message.channel.send(chatbot.get_response(message.content))
 
-        chatbot.get_response(td.randomquote().quote)
+        chatbot.get_response(td.randomquote().quote + message.content)
 
 
 if __name__ == "__main__":
