@@ -30,26 +30,30 @@ class Player(discord.Client):
                 capital = float(re.findall(
                     ":dollar: Capital: \*\*\$([0-9,\.]+)\*\*", message.content
                 )[0].replace(',', ''))
-                # if capital >= 1200:
-                #     n = int(capital/1200)
-                #     await message.channel.send(f"$$build steel mill {n}")
-                #     capital -= 1200*n
-                if capital >= 550:
-                    n = int(capital / 550)
+                if capital >= 550 + 73:
+                    n = int(capital / (550 + 73))
+                    await message.channel.send(f"$$buy land {n}")
+                    await asyncio.sleep(4)
                     await message.channel.send(f"$$build iron mine {n}")
             elif "<@601238925813612575>, are you sure you want" in message.content:
                 await message.add_reaction('\u2705')
 
-        elif message.channel.id == 601256029501521930:
+        if message.channel.id == 601256029501521930:
+            print(message)
+            print(message.type)
+            print(message.embeds)
             if "maga" in message.content and message.author.id == 131835640827346944:
                 while True:
                     await message.channel.send('$$sellall iron')
+                    await asyncio.sleep(30)
                     await message.channel.send("$$corp")
-                    await asyncio.sleep(60)
+                    await asyncio.sleep(30)
             else:
                 await message.channel.send(chatbot.get_response(message.content))
+        else:
+            chatbot.get_response(td.randomquote().quote + message.content)
 
-        chatbot.get_response(td.randomquote().quote + message.content)
+        chatbot.get_response(td.randomquote().quote)
 
 
 if __name__ == "__main__":
